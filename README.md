@@ -1,1 +1,1 @@
-# word-statistis
+# word-statistics
