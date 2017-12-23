@@ -68,3 +68,22 @@ func TestTop5Words(t *testing.T) {
 	expected := []string{"two", "three", "four", "five", "six"}
 	require.True(reflect.DeepEqual(expected, top5), "the top 5 words should be %v", expected)
 }
+
+func TestTop5Letters(t *testing.T) {
+	require := require.New(t)
+	a := aggregator.NewAggregator()
+	// initial
+	top5 := a.Top5Letters()
+	require.Nil(top5)
+
+	// given words are ingested
+	a.IngestWords("aaaaaa bbbbb")
+	a.IngestWords("cccc ddd ee f")
+
+	// when top 5 words are requested
+	top5 = a.Top5Letters()
+
+	// then
+	expected := []string{"e", "d", "c", "b", "a"}
+	require.True(reflect.DeepEqual(expected, top5), "the top 5 letters should be %v", expected)
+}

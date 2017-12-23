@@ -119,3 +119,30 @@ func (a *Aggregator) Top5Words() []string {
 
 	return top5
 }
+
+// Top5Letters returns up to 5 of the most seen letters.
+func (a *Aggregator) Top5Letters() []string {
+	if len(a.letterCounts) == 0 {
+		return nil
+	}
+
+	maps := make(Mappings, len(a.letterCounts))
+	i := 0
+	for l, c := range a.letterCounts {
+		maps[i] = Map{l, c}
+		i++
+	}
+
+	sort.Sort(maps)
+	takeFrom := 0
+	if len(maps) >= 5 {
+		takeFrom = len(maps) - 5
+	}
+
+	top5 := make([]string, 0)
+	for i := takeFrom; i < len(maps); i++ {
+		top5 = append(top5, maps[i].key)
+	}
+
+	return top5
+}
