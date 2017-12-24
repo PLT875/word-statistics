@@ -65,7 +65,7 @@ func TestTop5Words(t *testing.T) {
 	top5 = a.Top5Words()
 
 	// then
-	expected := []string{"two", "three", "four", "five", "six"}
+	expected := []string{"six", "five", "four", "three", "two"}
 	require.True(reflect.DeepEqual(expected, top5), "the top 5 words should be %v", expected)
 }
 
@@ -82,8 +82,8 @@ func TestTop5Letters(t *testing.T) {
 
 	// when top 5 words are requested
 	top5 = a.Top5Letters()
-
+	fmt.Println(top5)
 	// then
-	expected := []string{"e", "d", "c", "b", "a"}
+	expected := []string{"a", "b", "c", "d", "e"}
 	require.True(reflect.DeepEqual(expected, top5), "the top 5 letters should be %v", expected)
 }

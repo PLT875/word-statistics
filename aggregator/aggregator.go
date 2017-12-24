@@ -106,14 +106,15 @@ func (a *Aggregator) Top5Words() []string {
 		i++
 	}
 
-	sort.Sort(maps)
-	takeFrom := 0
-	if len(maps) >= 5 {
-		takeFrom = len(maps) - 5
+	// sort ascending
+	sort.Sort(sort.Reverse(maps))
+	takeTo := len(maps)
+	if len(maps) > 5 {
+		takeTo = 5
 	}
 
 	top5 := make([]string, 0)
-	for i := takeFrom; i < len(maps); i++ {
+	for i := 0; i < takeTo; i++ {
 		top5 = append(top5, maps[i].key)
 	}
 
@@ -133,14 +134,15 @@ func (a *Aggregator) Top5Letters() []string {
 		i++
 	}
 
-	sort.Sort(maps)
-	takeFrom := 0
-	if len(maps) >= 5 {
-		takeFrom = len(maps) - 5
+	// sort ascending
+	sort.Sort(sort.Reverse(maps))
+	takeTo := len(maps)
+	if len(maps) > 5 {
+		takeTo = 5
 	}
 
 	top5 := make([]string, 0)
-	for i := takeFrom; i < len(maps); i++ {
+	for i := 0; i < takeTo; i++ {
 		top5 = append(top5, maps[i].key)
 	}
 

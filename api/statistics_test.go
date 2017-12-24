@@ -40,6 +40,6 @@ func TestGetStatistics(t *testing.T) {
 	require.Equal(http.StatusOK, res.Code, fmt.Sprintf("the response code should be %d", http.StatusOK))
 
 	// and
-	expectedJSON := `{"count":21,"top_5_words":["ee","dd","cc","bb","aa"],"top_5_letters":["e","d","c","b","a"]}`
+	expectedJSON := `{"count":21,"top_5_words":["aa","bb","cc","dd","ee"],"top_5_letters":["a","b","c","d","e"]}`
 	require.JSONEq(expectedJSON, res.Body.String(), fmt.Sprintf("the response body should be %s", expectedJSON))
 }
